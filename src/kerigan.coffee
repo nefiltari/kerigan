@@ -96,7 +96,8 @@ Kerigan.Engine = (config = {}) ->
 
   # The successor
   eg.successor = (chance) ->
-    return true if eg.config.lucky_strike? and eg.config.lucky_strike
+    return true if eg.config.best_case? and eg.config.best_case
+    return false if eg.config.worst_case? and eg.config.worst_case
     rand = do Math.random
     return rand unless chance?
     if chance >= 1.0

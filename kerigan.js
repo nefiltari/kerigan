@@ -146,8 +146,11 @@
     };
     eg.successor = function(chance) {
       var rand;
-      if ((eg.config.lucky_strike != null) && eg.config.lucky_strike) {
+      if ((eg.config.best_case != null) && eg.config.best_case) {
         return true;
+      }
+      if ((eg.config.worst_case != null) && eg.config.worst_case) {
+        return false;
       }
       rand = Math.random();
       if (chance == null) {
