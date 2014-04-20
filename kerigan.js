@@ -140,6 +140,25 @@
       }
       return result;
     };
+    eg.successor = function(chance) {
+      var rand;
+      if ((eg.config.lucky_strike != null) && eg.config.lucky_strike) {
+        return true;
+      }
+      rand = Math.random();
+      if (chance == null) {
+        return rand;
+      }
+      if (chance >= 1.0) {
+        return true;
+      } else {
+        if (chance >= rand) {
+          return rand;
+        } else {
+          return false;
+        }
+      }
+    };
     eg.init();
     eg._this = this;
     eg._type = Kerigan.Engine;
@@ -343,23 +362,6 @@
     va._this = this;
     va._type = Kerigan.Value;
     return va;
-  };
-
-  Kerigan.successor = function(chance) {
-    var rand;
-    rand = Math.random();
-    if (chance == null) {
-      return rand;
-    }
-    if (chance >= 1.0) {
-      return true;
-    } else {
-      if (chance >= rand) {
-        return rand;
-      } else {
-        return false;
-      }
-    }
   };
 
 

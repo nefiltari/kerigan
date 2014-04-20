@@ -93,6 +93,18 @@ Kerigan.Engine = ->
     (result += '  ' + util.inspect(buff) + '\n') for buff in eg.buffs
     result
 
+  # The successor
+  eg.successor = (chance) ->
+    return true if eg.config.lucky_strike? and eg.config.lucky_strike
+    rand = do Math.random
+    return rand unless chance?
+    if chance >= 1.0
+      return true
+    else
+      if chance >= rand
+        return rand
+      else false
+
   # Blank initialize the Engine
   do eg.init
 
@@ -246,16 +258,6 @@ Kerigan.Value = (id, val) ->
   va._this = @
   va._type = Kerigan.Value
   va
-
-Kerigan.successor = (chance) ->
-  rand = do Math.random
-  return rand unless chance?
-  if chance >= 1.0
-    return true
-  else
-    if chance >= rand
-      return rand
-    else false
 
 ###
   The 'validation' event validates the consisiting state and set
