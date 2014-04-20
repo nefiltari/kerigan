@@ -13,9 +13,13 @@
 
   async = require('async');
 
-  Kerigan.Engine = function() {
+  Kerigan.Engine = function(config) {
     var eg;
+    if (config == null) {
+      config = {};
+    }
     eg = new (require('events').EventEmitter);
+    eg.config = config;
     eg.next = function(skill) {
       var buff, valid, _i, _len, _ref;
       valid = true;

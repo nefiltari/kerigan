@@ -9,8 +9,9 @@ async = require 'async'
 
 ## Code
 
-Kerigan.Engine = ->
+Kerigan.Engine = (config = {}) ->
   eg = new (require('events').EventEmitter)
+  eg.config = config
 
   # Process the next round with a skill
   eg.next = (skill) ->
