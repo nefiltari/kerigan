@@ -264,10 +264,17 @@
     return sk;
   };
 
-  Kerigan.Value = function(id, val) {
+  Kerigan.Value = function(id, val, cache) {
     var va;
+    if (cache == null) {
+      cache = true;
+    }
     va = function() {
-      return va.cache;
+      if (cache) {
+        return va.cache;
+      } else {
+        return va.update();
+      }
     };
     va.id = id;
     va.events = new (require('events').EventEmitter);
@@ -333,7 +340,7 @@
       });
     };
     va.length = va.count;
-    va.get = va.cache;
+    va.get = va;
     va.reset = va.set = va.init;
     va.install = va.add_mod;
     va.uninstall = va.del_mod;

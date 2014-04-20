@@ -187,8 +187,12 @@ Kerigan.Skill = (id, action) ->
   sk
 
 # Karigan Value - A value that can be changed with modifications
-Kerigan.Value = (id, val) ->
-  va = -> va.cache
+Kerigan.Value = (id, val, cache = true) ->
+  va = ->
+    if cache
+      va.cache
+    else
+      do va.update
   va.id = id
   va.events = new (require('events').EventEmitter)
 
@@ -243,7 +247,7 @@ Kerigan.Value = (id, val) ->
 
   # Aliases (also EventEmitter Mappers)
   va.length = va.count
-  va.get = va.cache
+  va.get = va
   va.reset = va.set = va.init
   va.install = va.add_mod
   va.uninstall = va.del_mod
