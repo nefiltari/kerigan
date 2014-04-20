@@ -1,0 +1,23 @@
+{
+  "name": "kerigan",
+  "version": "0.0.2",
+  "description": "Kerigan is a round based state engine.",
+  "main": "kerigan.js",
+  "private": true,
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script",
+    "compile": "coffee -c -o . ./src",
+    "watch": "coffee -c -w -o . ./src"
+  },
+  "author": "Ramastuh",
+  "license": "ISC",
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2"
+  },
+  "dependencies": {
+    "underscore": "^1.6.0",
+    "async": "^0.4.0"
+  }
+}
